@@ -14,5 +14,5 @@ For UNIT tests run: <br>
 
 
 ### Deploy
-Before running deployment you need to write out setup variables. Run `cp .env.example .env` and write down all params of `.env` file. Then go to `./scripts/deploy.js` and write down your own **feeReceiverAddress** address.<br> Rinkeby and Mainnet are supported, for deploy run: <br><br>
+Before running deployment you need to write out setup variables. Run `cp .env.example .env` and write down all params of `.env` file. Then go to `./scripts/deploy.js` and write down your own **feeReceiverAddress** address.<br><br> Rinkeby and Mainnet are supported, for deploy run: <br>
 `npx hardhat run scripts/deploy.js --network [NETWORK]` (`rinkeby` or `mainnet`)
