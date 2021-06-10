@@ -4,13 +4,13 @@ pragma solidity 0.8.0;
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
 import '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
-import './interfaces/IERC20Stablecoin.sol';
+import './interfaces/IERC20Mintable.sol';
 import './interfaces/IUniswapOracle.sol';
 
 
 contract Exchange is Ownable {
     using SafeMath for uint256;
-    using SafeERC20 for IERC20Stablecoin;
+    using SafeERC20 for IERC20Mintable;
 
     uint256 public fee;
     uint256 public constant HUNDRED_PERCENT = 10000;
@@ -22,8 +22,8 @@ contract Exchange is Ownable {
     address public immutable weth;
 
     IUniswapOracle public immutable oracle;
-    IERC20Stablecoin public immutable pusd;
-    IERC20Stablecoin public immutable privi;
+    IERC20Mintable public immutable pusd;
+    IERC20Mintable public immutable privi;
 
     event FeeChanged(uint256 oldFee, uint256 newFee);
     event FeeReceiverChanged(address oldReceiver, address newReceiver);
@@ -64,8 +64,8 @@ contract Exchange is Ownable {
         weth = weth_;
         feeReceiver = feeReceiver_;
 
-        pusd = IERC20Stablecoin(pusd_);
-        privi = IERC20Stablecoin(privi_);
+        pusd = IERC20Mintable(pusd_);
+        privi = IERC20Mintable(privi_);
         oracle = IUniswapOracle(oracle_);
     }
 
@@ -136,8 +136,8 @@ contract Exchange is Ownable {
     function _exchange(
         address initiator,
         address receiver,
-        IERC20Stablecoin tokenIn,
-        IERC20Stablecoin tokenOut,
+        IERC20Mintable tokenIn,
+        IERC20Mintable tokenOut,
         uint256 amountIn
     ) private returns (uint256) {
         //  Receive tokens from sender address

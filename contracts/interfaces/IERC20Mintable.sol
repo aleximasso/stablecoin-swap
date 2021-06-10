@@ -4,7 +4,7 @@ pragma solidity 0.8.0;
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
 
-interface IERC20Stablecoin is IERC20 {
+interface IERC20Mintable is IERC20 {
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
